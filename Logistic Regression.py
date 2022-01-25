@@ -25,7 +25,7 @@ def compute_cost(x, y, w, b):
 SAMPLE_NM = 1000
 x = 10 * np.random.random(size=(2, SAMPLE_NM))
 y = np.zeros(shape=(1, SAMPLE_NM))
-y[:, x[0, :] > x[1, :]] = 1
+y[:, x[0, :] <= x[1, :]] = 1
 
 # plt.figure()
 # plt.scatter(x[0, :], x[1, :])
@@ -33,9 +33,11 @@ y[:, x[0, :] > x[1, :]] = 1
 
 plt.figure()
 plt.grid()
-plt.title("Decision boundary target")
+plt.title("Target decision boundary")
 plt.scatter(x[0, np.argwhere(y == 0)[:, 1]], x[1, np.argwhere(y == 0)[:, 1]], marker='x', c='red')
 plt.scatter(x[0, np.argwhere(y == 1)[:, 1]], x[1, np.argwhere(y == 1)[:, 1]], marker='x', c='green')
+plt.xlabel("$x_0$")
+plt.ylabel("$x_1$")
 
 
 # Initialization
